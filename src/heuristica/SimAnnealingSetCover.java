@@ -11,10 +11,9 @@ public class SimAnnealingSetCover {
 	 * para el problema de Set Cover.
 	 * 
 	 * El problema de Set Cover:
-	 * ENTRADA: S1, S2... Sm (conjuntos), entero k (<= m)
-	 * SALIDA: <true> si existen k conjuntos de los dados
-	 * cuya unión da el mismo resultado que la union de los
-	 * m conjuntos iniciales
+	 * ENTRADA: S1, S2... Sm (conjuntos)
+	 * SALIDA: numero minimo de conjuntos necesarios cuya union da
+	 * el mismo resultado que la union de todos los conjuntos. 
 	 * 
 	 * Simulated Annealing:
 	 * ==============================================================
@@ -25,5 +24,9 @@ public class SimAnnealingSetCover {
 	 * 4. Elegir la nueva solucion.
 	 * 5. Reducir T.
 	 */
+	
+	// TODO Representacion de sets
+	// TODO Generador de soluciones aleatorias.
+	// TODO Evaluacion de soluciones
 
 }
