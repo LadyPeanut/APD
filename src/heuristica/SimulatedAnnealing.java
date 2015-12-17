@@ -1,6 +1,7 @@
 package heuristica;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -14,7 +15,30 @@ public class SimulatedAnnealing {
 	 */
 	protected static int simulatedAnnealing(List<Set<Integer>> lista){
 		int k = solucionAleatoria(lista);
-		double T = 
+		double temperatura = 0.9;
+		double kb = 0.9;
+		
+		Random r = new Random();
+		
+		while(temperatura < 0.05){
+			int k1 = solucionAleatoria(lista);
+			temperatura = temperatura * kb;
+			if(k1 < k){
+				/* la nueva solucion (k1) es mejor que la anterior (k) */
+				k = k1;
+			}
+			else{
+				/* k1 > k */
+				double epsilon = (double) ( (double) (Math.abs(k1 - k)) / temperatura );
+				double probabilidad = Math.pow(Math.E, -epsilon);
+				
+				if(probabilidad > r.nextDouble()){
+					k = k1;
+				}
+			}
+		}
+		
+		return k;
 	}
 	
 	/**
@@ -37,16 +61,26 @@ public class SimulatedAnnealing {
 		int elems = lista.size();	// numero de sets
 		
 		Set<Integer> set = new HashSet<Integer>();
+		
+		List<Boolean> repes = new LinkedList<Boolean>();
+		for(int i = 0; i < lista.size(); i++){
+			repes.add(false);
+		}
+		
 		Random r = new Random();
 		
 		while(n < m){
 			int next = r.nextInt(elems);
-			
-			Set<Integer> s = lista.get(next);
-			set.addAll(s);
-			
-			n = set.size();
-			k++;
+
+			if(!repes.get(next)){
+				Set<Integer> s = lista.get(next);
+				set.addAll(s);
+				
+				n = set.size();
+				k++;
+				repes.remove(next);
+				repes.add(next, true);
+			}
 		}
 		
 		return k;

@@ -101,13 +101,13 @@ public class SimAnnealingSetCover {
 	private static void pruebas(int m, String path) throws FileNotFoundException{
 		List<Set<Integer>> lista_conj = generarInput(path);
 		for(int i = 0; i < m; i++){
-			System.out.println(simulatedAnnealing(lista_conj));
+			System.out.println(SimulatedAnnealing.simulatedAnnealing(lista_conj));
 		}
 	}
 	
 	/**
 	 * @param path path del fichero
-	 * @return lista con lso sets contenidos en el fichero
+	 * @return lista con los sets contenidos en el fichero
 	 * @throws FileNotFoundException
 	 */
 	private static List<Set<Integer>> generarInput(String path) throws FileNotFoundException{
