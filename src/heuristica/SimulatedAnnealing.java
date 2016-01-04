@@ -20,9 +20,8 @@ public class SimulatedAnnealing {
 		
 		Random r = new Random();
 		
-		while(temperatura < 0.05){
+		while(temperatura > 0.001){
 			int k1 = solucionAleatoria(lista);
-			temperatura = temperatura * kb;
 			if(k1 < k){
 				/* la nueva solucion (k1) es mejor que la anterior (k) */
 				k = k1;
@@ -36,6 +35,7 @@ public class SimulatedAnnealing {
 					k = k1;
 				}
 			}
+			temperatura = temperatura * kb;
 		}
 		
 		return k;
