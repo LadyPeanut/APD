@@ -14,45 +14,14 @@ import java.util.Set;
 
 public class SimAnnealingSetCover {
 	
-	/**
-	 * Clase que implementa la heuristica de Enfriamiento Simulado
-	 * para el problema de Set Cover.
-	 * 
-	 * El problema de Set Cover:
-	 * ENTRADA: S1, S2... Sm (conjuntos)
-	 * SALIDA: numero minimo de conjuntos necesarios cuya union da
-	 * el mismo resultado que la union de todos los conjuntos. 
-	 * 
-	 * Simulated Annealing:
-	 * ==============================================================
-	 * 1. Inicializar con una solucion aleatoria. T alta.
-	 * BUCLE:
-	 * 2. Movimiento.
-	 * 3. Evaluar la nueva solucion.
-	 * 4. Elegir la nueva solucion.
-	 * 5. Reducir T.
+	/*
+	 * Clase para la interaccion con el usuario
+	 * y presentacion de resultados por pantalla
 	 */
-	
-	/* 
-	 * TODO Representacion de sets
-	 * Seran sets de enteros, representados por el TAD de Java
-	 */
-	
-	/* 
-	 * TODO Generador de soluciones aleatorias.
-	 * Recibira una lista de sets, generara el numero de elementos
-	 * que debe contener el set final (la union de los m sets) y
-	 * con generacion de numeros aleatorios, ira introduciendo los 
-	 * elementos de los sets que toquen hasta tener ese numero de 
-	 * elementos. Finalmente, devolvera el numero de sets necesario
-	 * para formar esa solucion 
-	 */
-	
-	// TODO Evaluacion de soluciones
 	
 	/**
-	 * Invocacion:
-	 * SimAnnealingSetCover -path <path> -m <numero de pruebas> 
+	 * @param args 
+	 * 		SimAnnealingSetCover -path <path> -m <numero de pruebas>
 	 */
 	public static void main(String[] args) {
 		int m = -1;
@@ -101,7 +70,8 @@ public class SimAnnealingSetCover {
 	private static void pruebas(int m, String path) throws FileNotFoundException{
 		List<Set<Integer>> lista_conj = generarInput(path);
 		for(int i = 0; i < m; i++){
-			System.out.println(SimulatedAnnealing.simulatedAnnealing(lista_conj));
+			System.out.println("Prueba no " + (i+1) + ": " 
+					+ SimulatedAnnealing.simulatedAnnealing(lista_conj));
 		}
 	}
 	

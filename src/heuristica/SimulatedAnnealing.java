@@ -1,3 +1,7 @@
+/*
+ * Patricia Lazaro Tello (554309)
+ */
+
 package heuristica;
 
 import java.util.HashSet;
@@ -8,6 +12,39 @@ import java.util.Set;
 
 public class SimulatedAnnealing {
 	
+	/*
+	 * Clase que implementa la heuristica de Enfriamiento Simulado
+	 * para el problema de Set Cover.
+	 * 
+	 * El problema de Set Cover:
+	 * ENTRADA: S1, S2... Sm (conjuntos)
+	 * SALIDA: numero minimo de conjuntos necesarios cuya union da
+	 * el mismo resultado que la union de todos los conjuntos. 
+	 * 
+	 * Simulated Annealing:
+	 * ==============================================================
+	 * 1. Inicializar con una solucion aleatoria. T alta.
+	 * BUCLE:
+	 * 2. Movimiento.
+	 * 3. Evaluar la nueva solucion.
+	 * 4. Elegir la nueva solucion.
+	 * 5. Reducir T.
+	 *
+	 * Representacion de sets:
+	 * Seran sets de enteros, representados por el TAD de Java
+	 * 
+	 * Generador de soluciones aleatorias:
+	 * Recibira una lista de sets, generara el numero de elementos
+	 * que debe contener el set final (la union de los m sets) y
+	 * con generacion de numeros aleatorios, ira introduciendo los 
+	 * elementos de los sets que toquen hasta tener ese numero de 
+	 * elementos. Finalmente, devolvera el numero de sets necesario
+	 * para formar esa solucion
+	 *  
+	 * Evaluacion de soluciones:
+	 * Numero de sets utilizados para cubrir todos los elementos
+	 */
+	
 	/**
 	 * @param lista lista de conjuntos
 	 * @return numero de conjuntos necesarios cuya union es
@@ -15,7 +52,7 @@ public class SimulatedAnnealing {
 	 */
 	protected static int simulatedAnnealing(List<Set<Integer>> lista){
 		int k = solucionAleatoria(lista);
-		double temperatura = 0.9;
+		double temperatura = 1.0;
 		double kb = 0.9;
 		
 		Random r = new Random();
